@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logical properties | Handling text direction</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.1rem;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .wrapper,
+        .wrapper2 {
+            display: flex;
+
+        }
+        .wrapper3 {
+            height: 400px;
+        }
+
+        a {
+            width: max-content;
+            margin: 5rem auto;
+            display: block;
+            font-size: 2rem;
+            color: teal;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .wrapper .box {
+            border: 1px solid;
+        }
+
+        .box {
+            /* Width equivalent logical prop. Changes accordingly with writing mode. */
+            inline-size: 200px;
+
+            /* Height equivalent logical prop. Changes with writing mode. */
+            block-size: 400px;
+            padding: 0.5rem;
+        }
+
+        .horizontal {
+
+            /* inline-direction or text direction is horizontal, block or line direction is top to bottom*/
+            writing-mode: horizontal-tb;
+        }
+
+        .vertical {
+
+            /* inline-direction or text direction is vertical/top-bottom, block or line direction is right-left*/
+            writing-mode: vertical-rl;
+
+            /* writing-mode: vertical-lr; */
+            /* writing-mode: sideways-rl; */
+        }
+
+
+        /* Logical properties mapped to physical ones */
+        .logical {
+            margin-block-start: 20px;
+            padding-inline-start: 2em;
+            padding-block-start: 2px;
+            border-block-start: 5px solid pink;
+            border-inline-end: 10px dotted rebeccapurple;
+            border-block-end: 1em double orange;
+            border-inline-start: 1px solid black;
+        }
+
+
+        /* Old physical proerties  */
+        .physical {
+            margin-top: 20px;
+            padding-right: 2em;
+            padding-top: 2px;
+            border-top: 5px solid pink;
+            border-right: 10px dotted rebeccapurple;
+            border-bottom: 1em double orange;
+            border-left: 1px solid black;
+        }
+
+        h2 {
+            border-block-end: 5px solid black;
+            padding-block-end: 0.4rem;
+            margin-block-start: 4rem;
+        }
+
+        /* Logical Values mapped to top,bottom,left,right */
+        .circle {
+            inline-size: 150px;
+            block-size: 150px;
+            border-radius: 50%;
+            background: red;
+            text-align: center;
+            float: inline-start;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Logical properties: width, height, padding, margin & border</h1>
+    <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Handling_different_text_directions">Go
+        to MDN Page</a>
+
+    <h2>Writing Modes & Logical Width-Height</h2>
+
+    <p>The two paragraph below has different writing mode properties, so the first goes horizontally, the second
+        vertically.
+        Note that they have some <code>inine-size</code> and <code>block-size</code> property that are logical
+        properties.
+    </p>
+
+    <p>
+        Go to the link above if you have confusions.
+    </p>
+
+    <div class="wrapper">
+        <div class="box horizontal">
+            <h2>Heading</h2>
+            <p>A paragraph. Demonstrating Writing Modes in CSS.</p>
+            <p>These boxes have inline-size.</p>
+        </div>
+        <div class="box vertical">
+            <h2>Heading</h2>
+            <p>A paragraph. Demonstrating Writing Modes in CSS.</p>
+            <p>These boxes have inline-size.</p>
+        </div>
+    </div>
+
+    <h2>Logical Margin, Padding & Border</h2>
+    <p>In the same way that we have mappings for width and height there are mappings for these properties.</p>
+    <p>Try changing the writing mode to see the difference.</p>
+
+    <div class="wrapper2">
+        <div class="box physical">
+            <h2>Physical Properties</h2>
+            <p>A paragraph. Demonstrating Logical Properties in CSS.</p>
+        </div>
+        <div class="box logical">
+            <h2>Logical Properties</h2>
+            <p>A paragraph. Demonstrating Logical Properties in CSS.</p>
+        </div>
+    </div>
+    
+    <h2>Logical Values</h2>
+    <p>There are also some properties that take physical values of top, right, bottom, and left. These values also have
+        mappings, to logical values — block-start, inline-end, block-end, and inline-start.
+    </p>
+    <p>
+        For example, you can float an image left to cause text to wrap round the image. You could replace left with
+        inline-start as shown in the example below.
+    </p>
+    <p>[Note: chrome does not support float:inline-left/right values. try it in Firefox.]</p>
+
+    <div class="wrapper3">
+        <div class="circle">A circle</div>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam iste blanditiis nihil minus. Voluptate praesentium autem eum, minima, culpa illo nam suscipit assumenda error dolorem ea dolorum harum nostrum quis.</p>
+    </div>
+</body>
+</html>

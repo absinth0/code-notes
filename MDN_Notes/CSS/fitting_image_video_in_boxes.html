@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Images_media_form_elements</title>
+    <style>
+        a {
+            width: max-content;
+            margin: 5rem auto;
+            display: block;
+            font-size: 2rem;
+            color: teal;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .wrapper {
+            border: 2px solid green;
+            padding: 1rem;
+        }
+
+        div[class^="box"] {
+            border: 2px solid red;
+            width: 400px;
+            margin: 1rem;
+        }
+
+
+        /* Start loking here  */
+        /* .box-1 img overflows because the image is in its intrinsic(original) size */
+        /* And it is wider than the conatining box width */
+        /* We can fit it inside the box using max-width property */
+
+        /* Set box-2 img a max-width of 100% so it cannot be wider than the box.*/
+        .box-2 img {
+            max-width: 100%;
+        }
+
+
+        .box-3,
+        .box-4 {
+            height: 400px;
+        }
+
+        /* box-3 also has a set height. aspec ratio of the box is different from the images asepct ratio */
+        .box-3 img {
+            max-width: 100%;
+        }
+
+        /* To cover / contain / fill a fixed height container, use object-fit property with height and width set to 100%*/
+        .box-4 img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Images_media_form_elements">MDN
+        Resource</a>
+
+    <div class="wrapper">
+        <div class="box-1"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" alt="ballons"></div>
+        <div class="box-2"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" alt="ballons"></div>
+        <p>The whitespace underneath is bacause of the <code>img</code> being an inline element.try changing it to block.
+        </p>
+        <div class="box-3"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" alt="ballons"></div>
+        <div class="box-4"><img src="https://mdn.github.io/css-examples/learn/images/balloons.jpg" alt="ballons"></div>
+    </div>
+</body>
+
+</html>

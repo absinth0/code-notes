@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Backgrounds | attachment property</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            margin-bottom: 2000px;
+        }
+        main {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: white;
+            background: wheat url(https://images.unsplash.com/photo-1592507486741-e0f1fc1d9954) no-repeat center 60% /cover;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            /* Attachment props  */
+            /* I could apply it in the background shorthand as well  */
+            background-attachment: fixed;
+        }
+
+        main p {
+            max-width: 640px;
+            padding: 1.1rem;
+            font-size: 1.2rem;
+            border-left: rgb(243, 227, 213) 4px solid;
+        }
+
+        h1 {
+            padding: .7rem;
+            margin-top: 4rem;
+            font-size: 2.4rem;
+        }
+
+        h1,p {
+            background: black;
+        } 
+        a {
+            width: max-content;
+            margin: 5rem auto;
+            display: block;
+            font-size: 2rem;
+            color: teal;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <h1>Race Doesn't Define Who I am.</h1>
+        <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Exercitationem atque similique consectetur sit
+            aspernatur ducimus, dignissimos natus magni dicta tempore inventore vitae sapiente, iure quas ipsam, tempora
+            possimus. Amet, id?</p>
+    </main>
+    <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/background">MDN Background Property</a>
+    <iframe src="https://mdn.github.io/learning-area/css/styling-boxes/backgrounds/background-attachment.html" frameborder="0" height="800px" width="100%" sandbox></iframe>
+    
+</body>
+
+</html>

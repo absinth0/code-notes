@@ -1,0 +1,18 @@
+<%- include("../partials/header") %>
+
+<h2>Here is a list of Comments from friends</h2>
+<% comments.forEach(comment => { %>
+    <div>
+        <p><%= comment.author %> </p>
+        <p><%= comment.comment %> </p>
+    </div>
+    
+<% }); %>
+
+<form action="/addcomment" method="POST" >
+    <input type="text" name="author" placeholder="Name">
+    <input type="textarea" name="comment" placeholder="Your Comment">
+    <button>Add Comment</button>
+</form>
+
+<%- include("../partials/footer") %>

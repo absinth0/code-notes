@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inehritance | "all" property</title>
+    <style>
+        body {
+            color: green;
+            max-width: 960px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin: auto;
+            background-color: #f1f1f1;
+            line-height: 1.7;
+        }
+        p {
+            font-weight: 500;
+            font-size: 1.1rem;
+        }
+    
+        ul {
+            color: rgb(194, 174, 0);
+        }
+
+    
+    /* inheritance props  */
+        .my-class-1, .my-class-1 a {
+            color: inherit;
+        }
+
+        .my-class-2, .my-class-2 a {
+            color: initial;
+        }
+
+        .my-class-3, .my-class-3 a {
+            color: unset;
+        }
+        
+        
+        /* blockquote */
+        
+        blockquote {
+            background-color: red;
+            border: 2px solid green;
+        }
+
+        .fix-this {
+            all: unset;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Inheritance in CSS & the related properties</h1>
+
+    <p>
+        all the <strong><abbr title="Cascading Style Sheet">CSS</abbr></strong> properties can be set to these values
+        that control inheritance of that property:
+    </p>
+
+    <ul>
+        <li>inherit</li>
+        <li>initial</li>
+        <li>unset</li>
+    </ul>
+
+    <p>There is also a property called <code>all</code> that takes one of these three as input and sets all propertis of
+        the element to that value.</p>
+
+    <p>Lets see some examples now:</p>
+
+    <ul>
+        <li>Default <a href="#">link</a> color(link do not inherit color by default. exceptional :3 )</li>
+        <li class="my-class-1">Inherit the <a href="#">link</a> color</li>
+        <li class="my-class-2">Reset the <a href="#">link</a> color</li>
+        <li class="my-class-3">Unset the <a href="#">link</a> color(color is inherited by Default)
+        </li>
+    </ul>
+
+    <p>let's see another:</p>
+
+    <ul>
+        <li>no propery</li>
+        <li class="my-class-1">inherit</li>
+        <li class="my-class-2">initial</li>
+        <li class="my-class-3">unset</li>
+    </ul>
+    <p>Let's see the <code>all</code> property in action:</p>
+
+    <blockquote>
+        <p>This blockquote is styled</p>
+    </blockquote>
+
+    <blockquote class="fix-this">
+        <p>This blockquote is not styled</p>
+    </blockquote>
+</body>
+
+</html>
