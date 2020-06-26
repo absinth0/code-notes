@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Grid</title>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 18px;
+            line-height: 2;
+            margin: 0;
+        }
+
+        body {
+            max-width: 1200px;
+            margin: auto;
+            margin-bottom: 400px;
+            padding: 1rem;
+        }
+
+        body > a {
+            width: max-content;
+            display: block;
+            font-size: 2rem;
+            margin: auto;
+        }
+
+        h2 {
+            font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+            color: white;
+            background: rebeccapurple;
+            margin-top: 5rem;
+            width: max-content;
+            padding: 0 .3rem;
+            padding-left: 2rem;
+            line-height: 1.7;
+        }
+
+
+        code {
+            padding: 0 2px;
+            background-color: #eee;
+            border-radius: 2px;
+        }
+
+        .container {
+            margin: 2rem 0;
+        }
+
+        .container-2 {
+            /* width: 800px; */
+            margin: 2rem auto;
+        }
+
+        .container div,
+        .container-2 div,
+        .container-3 div,
+        .container-4 div,
+        header,
+        footer,
+        aside,
+        article {
+            padding: .5rem;
+            background-color: turquoise;
+            border: 2px solid rgb(255, 141, 160);
+            border-radius: 5px;
+        }
+
+
+        /* Start Here  */
+
+        .container {
+
+            display: grid;
+
+            /* initially one column exist as with normal flow, so nothing special happens. 
+            Lets add three columns, each with 1fr */
+
+            /* we can use any legnth unit but fr is better and flexible. it distributes available space, but not all space*/
+
+
+            grid-template-columns: 1.5fr 1fr 1fr;
+
+            /* repeat(n, l) function outputs the l value n times. Useful when defining large number of columns.
+            The following line does the same as the above:  */
+
+            grid-template-columns: 1.5fr repeat(2, 1fr);
+
+
+            /* we could also set an explicit row grid using:  */
+
+            /* grid-template-rows: 2fr 1fr; */
+
+
+            /* set gap between tracks using grid-gap/ just gap shorthand (column-gap + row-gap) */
+
+            grid-gap: .5rem;
+            gap: .5rem;
+            row-gap: .5rem;
+            column-gap: .5rem;
+
+            /* implicit grids(rows in this case) are auto sized by default, but you can set it using grid-auto-rows or grid-auto-columns */
+
+            grid-auto-rows: 100px;
+
+            /* fixed size can cause overflow , so it is better to use
+            minmax(min-size, max-size) functon*/
+
+            grid-auto-rows: minmax(100px, auto);
+        }
+
+
+        .container-2 {
+            display: grid;
+
+            /* we can pass auto-fill in repeat() func so the grid decides how many columns will fit in the container */
+
+            grid-template-columns: repeat(auto-fill, 300px);
+
+            /* we could also pass minmax() func as the 2nd parameter so it keeps a min size but can grow larger */
+
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+
+            gap: .5rem;
+            grid-auto-rows: minmax(100px, auto);
+        }
+
+
+
+        /* Line-based placement */
+        /* We will use grid-column and grid-row props on child elements to place elements in container 3 */
+
+        .container-3 {
+            display: grid;
+            border: 1px solid;
+            padding: .5rem;
+
+            grid-template-columns: 1fr 4fr;
+            gap: 10px;
+        }
+
+
+        /* Now let's position the elements:  */
+
+        /* You should learn clearly how these values work: */
+
+        .container-3 header {
+
+            /* grid-column : Shorthand for grid-column stat and end and vice versa */
+
+            /* We define grid-column-start as grid 1 and the end as 3 */
+            /* Note that we only have 2 grid columns, not 3. You need to give the end a +1 value. */
+
+            /* So if we had 4 grid columns we wanted to span all of them we would write something like this:  */
+            /* grid-column: 1 / 5; */
+
+            grid-column: 1 / 3;
+            grid-row: 1;
+        }
+
+        .container-3 footer {
+            grid-column: 1 / 3;
+            grid-row: 3;
+        }
+
+
+
+        /* using grid-template-areas to posiotin elements  */
+
+        .container-4 {
+            display: grid;
+            grid-template-columns: 1fr 3fr;
+            gap: 5px;
+
+            /* now we deine our layout.  */
+            /* Note that each string line specifies a row layout */
+            /* And each space seperated names define a layout element, we can name them however we want */
+
+            grid-template-areas: "head head"
+                                "sidebar content"
+                                "foot foot";
+
+        }
+
+        /* Now we assign these positional elements to our actual elements */
+
+        .container-4 header {
+            grid-area: head;
+        }
+
+        .container-4 aside {
+            grid-area: sidebar;
+        }
+
+        .container-4 article {
+            grid-area: content;
+        }
+
+        .container-4 footer {
+            grid-area: foot;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Grids">MDN Resource</a>
+
+    <h2>Grid Intro</h2>
+    <p>A Grid will typically have <strong>columns</strong> and <strong>rows</strong>, and gaps between each row and
+        column known as <strong>gutters</strong>.</p>
+
+    <p>Basic grid properties and functions:</p>
+    <ul>
+        <li><strong><code>grid-template-columns</code></strong>: Declare explicit grid columns.</li>
+
+        <li><strong><code>grid-template-rows</code></strong>: Declare explicit grid rows.</li>
+
+        <li><strong><code>gap/grid-gap</code></strong>(legacy): Define gutter size/gap between tracks.</li>
+
+        <li><strong><code>grid-auto-rows/grid-auto-columns</code></strong>: Defines the size of implicit grid(either row
+            or column).</li>
+
+        <li><strong><code>minmax(minVal, maxVal)</code></strong> function.</li>
+
+        <li><strong><code>repeat(n, l)</code></strong> function.</li>
+
+        <li><strong><code>grid-column</code></strong>: Shorthand for <strong><code>grid-column-start</code></strong> and
+            <strong><code>grid-column-end</code></strong> property.</li>
+
+        <li><strong><code>grid-row</code></strong>: Shorthand for <strong><code>grid-row-start</code></strong> and
+            <strong><code>grid-row-end</code></strong> property.</li>
+
+        <li><strong><code>grid-template-areas</code></strong>: specifies named grid areas that can be assigned to elements using <strong><code>grid-area</code></strong> property.Go to <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-areas">mdn reference</a> for more details.</li>
+    </ul>
+
+    <br>
+
+    <p>See The Comments in CSS:</p>
+
+    <div class="container">
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <div>Item 3</div>
+        <div>Item 4</div>
+        <div>Item 5</div>
+        <div>Item 6</div>
+    </div>
+    <h2>Automatic explicit grids</h2>
+    <p>In the second container, we are using
+        <strong><code>repeat(auto-fill, value)</code></strong>
+        to
+        determine automatically how many columns will fit.
+        <br>
+        Also, using <strong><code>minmax()</code></strong>
+        function as <strong><code>value</code></strong> sizes the grids automatically to fit.
+    </p>
+    <p>Change the viewport width to see what happens.</p>
+    <div class="container-2">
+        <div>Item 1</div>
+        <div>Item 2</div>
+        <div>Item 3</div>
+        <div>Item 4</div>
+        <div>Item 5</div>
+        <div>Item 6</div>
+    </div>
+
+    <h2>Line based placement: grid-column/grid-rows</h2>
+
+    <p>Using the <strong><code>grid-column / grid-row</code></strong> property we can place elements on different lines
+        and allocate different areas.</p>
+
+    <div class="container-3">
+        <header>Header</header>
+        <aside>Aside</aside>
+        <article>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam illum commodi itaque? Reprehenderit
+            deleniti fugiat commodi, magnam explicabo sit, cum unde a atque itaque repellat, molestiae adipisci. Quos
+            fuga, voluptatibus rem, architecto id quibusdam sapiente aperiam tempora similique iure earum. Consequatur
+            saepe veritatis beatae sed! Officia deleniti suscipit doloribus perferendis reprehenderit veniam saepe?
+            Dolor suscipit doloribus, magni iusto maxime ullam.</article>
+        <footer>Footer</footer>
+    </div>
+    <h2>Positoining with grid-template areas</h2>
+    <p>You can give different names to different positions and define each rows as strings.</p>
+    <p>See CSS for more. Go to Mdn page for a lot more.</p>
+    <div class="container-4">
+        <header>Header</header>
+        <aside>Aside</aside>
+        <article>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam illum commodi itaque? Reprehenderit
+            deleniti fugiat commodi, magnam explicabo sit, cum unde a atque itaque repellat, molestiae adipisci. Quos
+            fuga, voluptatibus rem, architecto id quibusdam sapiente aperiam tempora similique iure earum. Consequatur
+            saepe veritatis beatae sed! Officia deleniti suscipit doloribus perferendis reprehenderit veniam saepe?
+            Dolor suscipit doloribus, magni iusto maxime ullam.</article>
+        <footer>Footer</footer>
+    </div>
+</body>
+
+</html>
