@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flexbox</title>
+    <style>
+        html {
+            font-family: Arial, Helvetica, sans-serif;
+            line-height: 1.5;
+            margin: 0;
+        }
+        a {
+            width: max-content;
+            display: block;
+            font-size: 2rem;
+            margin: auto;
+        }
+        
+        .highlight {
+            background-color: yellow;
+            padding: 2px;
+        }
+
+        /* Start Here */
+
+        section {
+            display: flex;
+            height: 600px;
+
+            /* default align-items value is stretch */
+            align-items: center;
+
+            /* default justify-content value is stretch */
+            justify-content: center;
+        }
+
+        article {
+            margin: .5rem;
+            padding: 1rem;
+            background: #a2d7ff;
+            color: #000000;
+
+            flex: 1 300px;
+        }
+
+        article:last-child {
+
+            /* flex: 2 300px; */
+            /* Or in longhands: */
+            flex-grow: 2;
+            flex-basis: 300px;
+
+            /* align self property aligns itself */
+            align-self: stretch;
+
+            /* changes its order. by default all have order 0 . higher order will come later, lower order comes first */
+            order: -1;
+        }
+
+        /* There is another shorthand for flex-direction and flex-wrap
+        which is flex-flow */
+
+    </style>
+</head>
+
+<body>
+    <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">MDN Resource</a>
+    <h2>Things to look for:</h2>
+    <ul>
+        <li><span class="highlight">flex Shorthand</span></li>
+        <li>flex-grow</li>
+        <li>flex-shrink</li>
+
+    </ul>
+    <section>
+        <article>
+            <h2>Heading  1</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum fugit a esse magnam iure incidunt dicta
+                inventore nobis provident, nulla sed error illo mollitia
+                Accusantium.</p>
+        </article>
+        <article>
+            <h2>Heading 2</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum fugit a esse magnam iure incidunt dicta
+                inventore nobis provident, nulla sed error illo mollitia aspernatur dignissimos repellat sint dolore?
+                Accusantium.</p>
+        </article>
+        <article>
+            <h2>Heading 3</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum fugit a esse magnam iure incidunt dicta
+                inventore nobis provident, Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ut doloremque nulla delectus expedita sequi, perspiciatis quod incidunt earum. Repudiandae architecto ex a ratione facilis quaerat, alias atque laudantium molestiae. nulla sed error illo mollitia aspernatur dignissimos repellat sint dolore?
+                Accusantium.</p>
+        </article>
+    </section>
+</body>
+
+</html>
