@@ -11,29 +11,60 @@
             line-height: 1.5;
             margin: 0;
         }
+
+        body {
+            font-size: 1.2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-bottom: 400px;
+            padding: 1rem;
+        }
+        
         a {
             width: max-content;
             display: block;
             font-size: 2rem;
             margin: auto;
         }
-        
-        .highlight {
-            background-color: yellow;
-            padding: 2px;
+
+        body > h2 {
+            width: max-content;
+            background-color: #222;
+            color: rgb(248, 248, 248);
+            padding: 0 .5rem 0 1rem;
         }
+        
+        code {
+            font-weight: bold;
+            font-size: 1.3rem;
+            background-color: #eee;
+            padding: 1px;
+        }
+
 
         /* Start Here */
 
         section {
             display: flex;
-            height: 600px;
+            height: 500px;
+
+
+            /* align-items property sets the align-self value of all children, which aligns the elements along the cross axis*/
 
             /* default align-items value is stretch */
+
             align-items: center;
 
+            /* justify-content property defines how flex children are organized along the main axis */
             /* default justify-content value is stretch */
+
             justify-content: center;
+
+             /* There is another property called align-content which controls distribution space among children in multiple lines.  */
+
+            /* Note that it has no effect on single line flexbox. */
+
+            /* align-content: space-around; */
         }
 
         article {
@@ -49,7 +80,7 @@
 
             /* flex: 2 300px; */
             /* Or in longhands: */
-            flex-grow: 2;
+            flex-grow: 1;
             flex-basis: 300px;
 
             /* align self property aligns itself */
@@ -60,18 +91,26 @@
         }
 
         /* There is another shorthand for flex-direction and flex-wrap
-        which is flex-flow */
+        which is flex-flow. */
 
     </style>
 </head>
 
 <body>
     <a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Flexbox">MDN Resource</a>
-    <h2>Things to look for:</h2>
+    <h2>Properties to know about:</h2>
     <ul>
-        <li><span class="highlight">flex Shorthand</span></li>
-        <li>flex-grow</li>
-        <li>flex-shrink</li>
+        <li><code>justify-content</code> & <code>align-items</code>: Organize flex items along <strong>main</strong> axis and <strong>cross</strong> axis.</li>
+        <li><code>flex-flow</code>: Shorthand for <code>flex-direction</code> and <code>flex-wrap</code> property.</li>
+
+        <li><code>flex</code>: Shorthand for <code>flex-grow</code>,<code>flex-shrink</code> and <code>flex-basis</code> property. Should not use until necessary.</li>
+
+        <li><code>align-content</code>: organize items that span multiple lines.</li>
+
+        <li><code>order</code>: changes default order of a flex child.</li>
+
+        <li><code>align-self</code>: aligns the flex element along cross axis.</li>
+
 
     </ul>
     <section>
@@ -90,8 +129,7 @@
         <article>
             <h2>Heading 3</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum fugit a esse magnam iure incidunt dicta
-                inventore nobis provident, Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ut doloremque nulla delectus expedita sequi, perspiciatis quod incidunt earum. Repudiandae architecto ex a ratione facilis quaerat, alias atque laudantium molestiae. nulla sed error illo mollitia aspernatur dignissimos repellat sint dolore?
-                Accusantium.</p>
+                inventore nobis provident, Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ut doloremque nulla delectus expedita sequi, perspiciatis quod incidunt earum. Repudiandae architecto ex a ratione facilis quaerat.</p>
         </article>
     </section>
 </body>
